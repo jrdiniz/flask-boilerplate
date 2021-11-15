@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h1>HTMx Tests - Edit and Submit</h1>
+    <table class="table table-hover">
+        <thead>
+            <th>#</th>
+            <th>Name</th>
+            <th>Address</th>
+            <th></th>
+        </thead>
+        <tbody hx-target="closest tr" hx-swap="outerHTML swap:1s">
+            {% for address in addresses %}
+            <tr>
+                <td>{{ address.id }} </td>
+                <td>{{ address.name }}</td>
+                <td>{{ address.address}}</td>
+                <td>
+                    <button class="btn btn-primary btn-sm"><i class="bi bi-pencil-square"></i>Edit</button>
+                    <button class="btn btn-danger btn-sm" hx-delete="{{ url_for('delete', id=address.id) }}"><i class="bi bi-trash"></i>Delete</button>
+                </td>
+            </tr> 
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
