@@ -2,10 +2,10 @@
 from flask import Flask
 
 # Extensions
-from application.extensions import configurations
+from app.extensions import configurations
 
 # Blueprints
-from application.blueprints import default
+from app.blueprints import webui
 
 def create_app():
     app = Flask(__name__)
@@ -14,6 +14,6 @@ def create_app():
     configurations.init_app(app)
 
     # Initialize Blueprints
-    default.init_app(app)
+    webui.init_app(app)
 
     return app

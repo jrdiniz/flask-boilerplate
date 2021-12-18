@@ -1,10 +1,10 @@
 from flask import Blueprint
 
 # Import routes
-from .default import index
+from .webui import index
 
 # Register blueprints
-bp = Blueprint("default", __name__, template_folder="templates", static_folder="static")
+bp = Blueprint("webui", __name__, template_folder="templates", static_folder="static")
 
 # Index route
 index.methods = ["GET"]
