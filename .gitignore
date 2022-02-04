@@ -133,3 +133,5 @@ dmypy.json
 *.csv
 migrations/
 .vscode/
+Pipfile
+Pipfile.lock
