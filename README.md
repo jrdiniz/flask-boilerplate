@@ -52,3 +52,6 @@ FLASK_APP=app
 FLASK_ENV=development
 FLASK_CONFIG_FILE=config.TestingConfig
 ```
+
+## Deploy using Ansible
+
