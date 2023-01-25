@@ -8,7 +8,7 @@ git clone git@github.com:jrdiniz/flask-boilerplate.git .
 
 ## Create Virtual Environment
 
-I have test this project with python 3.6 and 3.8, with you test with another version, please open a pull request to update the documentation.
+I have test this project with 3.8, with you test with another version, please open a pull request to update the documentation.
 
 ```
 python3.6 -m venv env
@@ -33,7 +33,7 @@ The project use python-dotenv library, so you need the .env file on root directo
 
 ```
 FLASK_APP=app
-FLASK_ENV=development
+FLASK_DEBUG=True
 FLASK_CONFIG_FILE=config.DevelopmentConfig
 ```
 
@@ -41,7 +41,7 @@ FLASK_CONFIG_FILE=config.DevelopmentConfig
 
 ```
 FLASK_APP=app
-FLASK_ENV=production
+FLASK_DEBUG=False
 FLASK_CONFIG_FILE=config.ProductionConfig
 ```
 
@@ -49,7 +49,7 @@ FLASK_CONFIG_FILE=config.ProductionConfig
 
 ```
 FLASK_APP=app
-FLASK_ENV=development
+FLASK_DEBUG=True
 FLASK_CONFIG_FILE=config.TestingConfig
 ```
 
