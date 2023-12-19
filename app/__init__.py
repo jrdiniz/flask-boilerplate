@@ -7,6 +7,7 @@ from app.extensions import configurations
 # Blueprints
 from app.blueprints import webui
 
+
 def create_app():
     app = Flask(__name__)
 
