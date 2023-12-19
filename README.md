@@ -27,7 +27,7 @@ pip install -r requirements.txt
 
 ## Environment Configuration
 
-The project use python-dotenv library, so you need the .env file on root directory of the project:
+The project use python-dotenv library, so you need create an .env file on root directory of the project:
 
  - Development Environment 
 
@@ -35,22 +35,18 @@ The project use python-dotenv library, so you need the .env file on root directo
 FLASK_APP=app
 FLASK_DEBUG=True
 FLASK_CONFIG_FILE=config.DevelopmentConfig
+SECRET_KEY=<your-secret-key>
+
 ```
 
- - Production Enviroment
+ - Production Environment
 
 ```
 FLASK_APP=app
 FLASK_DEBUG=False
 FLASK_CONFIG_FILE=config.ProductionConfig
-```
+SECRET_KEY=<your-secret-key>
 
- - Testing Enviroment
-
-```
-FLASK_APP=app
-FLASK_DEBUG=True
-FLASK_CONFIG_FILE=config.TestingConfig
 ```
 
 ## Deploy using Ansible
