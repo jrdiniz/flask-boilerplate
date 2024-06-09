@@ -7,6 +7,7 @@ blinker==1.7.0
 click==8.1.7
 Flask==3.0.2
 frozenlist==1.4.1
+gunicorn==22.0.0
 idna==3.7
 importlib-metadata==6.0.0
 itsdangerous==2.1.2

@@ -23,7 +23,7 @@ pip install -r requirements.txt
 
 ## Environment Configuration
 
-The project use python-dotenv library, so you need create an .env file on root directory of the project:
+The project use python-dotenv library, so you need create an .env file on root directory:
 
  - Development Environment 
 
@@ -47,9 +47,29 @@ SECRET_KEY=<your-secret-key>
 
 # Library
 
- - Bootstrap 5.3.3
- - Bootstrap Icons 1.11.3
- - HTMX 1.9.10
+ - Bootstrap5
+ - Bootstrap Icons
+ - HTMX
+
+## Deploy with Docker
+
+Built app image
+
+```
+docker built -t flask-boilerplate .
+```
+
+To run the container
+
+```
+docker run -p -d <host-port>:5000 --name <project-name> flask-boilerplate
+```
+
+To deploy the container
+
+```
+docker exec -it <container-id> bash
+```
 
 ## Deploy using Ansible
 
