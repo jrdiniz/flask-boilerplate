@@ -37,7 +37,7 @@ EXPOSE 5000
 # Define environment variable
 ENV FLASK_APP=app
 ENV FLASK_DEBUG=False
-ENV FLASK_CONFIG_FILE=config.DevelopmentConfig
+ENV FLASK_CONFIG_FILE=config.ProductionConfig
 ENV SECRET_KEY=<your-secret-key>
 
 # Command to run the Flask application

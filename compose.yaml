@@ -1,0 +1,9 @@
+services:
+  app:
+    build: .
+    ports:
+      - "8000:5000"
+    environment:
+      - FLASK_DEBUG=false
+      - SECRET_KEY=asdklfjaklsdfjalskdjf
+      - FLASK_CONFIG_FILE=config.ProductionConfig
