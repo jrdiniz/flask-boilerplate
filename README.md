@@ -51,6 +51,12 @@ SECRET_KEY=<your-secret-key>
  - Bootstrap Icons
  - HTMX
 
+### Upgrade NPM Package
+
+```npx npm-check-updates -u```
+
+```npm install```
+
 ## Deploy with Docker
 
 Built app image
