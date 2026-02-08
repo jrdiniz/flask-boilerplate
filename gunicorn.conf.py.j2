@@ -1,0 +1,7 @@
+workers = {{ gunicorn_workers }}
+worker_connections = {{ gunicorn_worker_connections }}
+timeout = {{ gunicorn_timeout }}
+bind = "{{ gunicorn_bind }}"
+accesslog = "{{ gunicorn_accesslog }}"
+errorlog = "{{ gunicorn_errorlog }}"
+loglevel = "{{ gunicorn_loglevel }}"

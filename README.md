@@ -1,81 +1,108 @@
-# How usage flask-boilerpate
+# Como usar o flask-boilerpate
 
-## Clone Repository
+## Clonar repositório
 
 ```
 git clone git@github.com:jrdiniz/flask-boilerplate.git . 
 ```
 
-## Create Virtual Environment
+## Criar ambiente virtual
 
-I have test this project with 3.10, with you test with another version, please open a pull request to update the documentation.
+Eu testei este projeto com a versão 3.10. Se você testar com outra versão, por favor, abra um pull request para atualizar a documentação.
 
 ```
 python3.10 -m venv env
 ```
 
-## Install Dependencies 
+## Instalar dependências 
 
 ```
-source env/bin/active
+source env/bin/activate
 pip install -r requirements.txt
 ```
 
-## Environment Configuration
+## Configuração do ambiente
 
-The project use python-dotenv library, so you need create an .env file on root directory:
+O projeto usa a biblioteca python-dotenv, então você precisa criar um arquivo .env no diretório raiz:
 
- - Development Environment 
+ - Ambiente de Desenvolvimento 
 
 ```
 FLASK_APP=app
 FLASK_DEBUG=True
 FLASK_CONFIG_FILE=config.DevelopmentConfig
-SECRET_KEY=<your-secret-key>
+SECRET_KEY=<sua-chave-secreta>
 
 ```
 
- - Production Environment
+ - Ambiente de Produção
 
 ```
 FLASK_APP=app
 FLASK_DEBUG=False
 FLASK_CONFIG_FILE=config.ProductionConfig
-SECRET_KEY=<your-secret-key>
+SECRET_KEY=<sua-chave-secreta>
 
 ```
 
-# Library
+# Estrutura do projeto
+
+```
+.
+├── app/                  # Código fonte do aplicativo
+│   ├── __init__.py       # Inicialização do pacote
+│   ├── config.py         # Configurações do aplicativo
+│   ├── routes.py         # Rotas da API
+│   └── ...
+├── env/                  # Ambiente virtual (não versionado)
+├── requirements.txt       # Dependências do Python
+├── Dockerfile            # Imagem do Docker
+└── README.md             # Este arquivo
+```
+
+# Bibliotecas
 
  - Bootstrap5
  - Bootstrap Icons
  - HTMX
 
-### Upgrade NPM Package
+### Atualizar pacote NPM
 
 ```npx npm-check-updates -u```
 
 ```npm install```
 
-## Deploy with Docker
+## Implantar com Docker
 
-Built app image
-
-```
-docker built -t flask-boilerplate .
-```
-
-To run the container
+Criar imagem da aplicação
 
 ```
-docker run -p -d <host-port>:5000 --name <project-name> flask-boilerplate
+docker build -t flask-boilerplate .
 ```
 
-To deploy the container
+Para executar o contêiner
+
+```
+docker run -p <host-port>:5000 -d --name <project-name> flask-boilerplate
+```
+
+Para implantar o contêiner
 
 ```
 docker exec -it <container-id> bash
 ```
 
-## Deploy using Ansible
+## Implantar usando Ansible
+
+Para implantar usando Ansible, certifique-se de que o Ansible esteja instalado e execute o seguinte comando:
+
+```
+ansible-playbook -i hosts deploy.yml
+```
+
+## Notas Finais
+
+- Certifique-se de que as portas necessárias estejam abertas em seu firewall.
+- Verifique os logs da aplicação para solucionar problemas: `docker logs <container-id>`.
+- Para acessar o shell do contêiner em execução: `docker exec -it <container-id> /bin/bash`.
 

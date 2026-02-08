@@ -1,16 +1,39 @@
 ---
-- name: Playbook to deploy flask bolierplate
+- name: Playbook to deploy flask bolierplate in production environment
   hosts: 127.0.0.1
   connection: local
   
   vars:
     application_user: ''
     application_group: ''
-    application_logfile: ''
     application_path: ''
 
+    # Gunicorn configuration
+    gunicorn_workers: 1
+    gunicorn_worker_connections: '500'
+    gunicorn_bind: '127.0.0.1:5000'
+    gunicorn_timeout: 120
+    gunicorn_accesslog: 'access.log'
+    gunicorn_errorlog: 'error.log'
+    gunicorn_loglevel: 'info'
+
   tasks:
-  - name: Create application user
+  - name: Install SO dependecies
+    package:
+      name:
+        - python3-dev
+        - python3-venv
+        - build-essential
+        - nodejs
+        - npm
+      state: present
+
+  - name: Create Application Group
+    group:
+      name: '{{ application_group }}'
+      gid: 480
+
+  - name: Create Application user
     user:
       name: '{{ application_user }}'
       comment: Application User
@@ -26,14 +49,6 @@
       owner: '{{ application_user }}'
       group: '{{application_group}}'
       mode: 0755
-
-  - name: Create logfile
-    file:
-      path: '{{ application_path }}/{{ application_user }}/public_html/{{ application_logfile }}'
-      state: touch
-      owner: '{{ application_user }}'
-      group: '{{application_group}}'
-      mode: 0644
 
   - name: Copy Application Source
     copy:
@@ -55,6 +70,14 @@
     copy:
       src: ./wsgi.py
       dest: '{{ application_path }}/{{ application_user }}/public_html/'
+      remote_src: yes
+      owner: '{{ application_user }}'
+      group: '{{application_group}}'
+
+  - name: Gunicorn config
+    template:
+      src: gunicorn_config.py.j2
+      dest: '{{ application_path }}/{{ application_user }}/public_html/gunicorn_config.py'
       remote_src: yes
       owner: '{{ application_user }}'
       group: '{{application_group}}'
