@@ -52,10 +52,10 @@ SECRET_KEY=<sua-chave-secreta>
 ├── app/                  # Código fonte do aplicativo
 │   ├── __init__.py       # Inicialização do pacote
 │   ├── config.py         # Configurações do aplicativo
-│   ├── blueprints        # Blueprint  
+│   └── blueprints        # Blueprint  
 │       └── webui 
-             ├── __init_.py
-             ├── webui.py      
+│           ├── __init_.py
+│           ├── webui.py      
 │   └── ...
 ├── env/                  # Ambiente virtual (não versionado)
 ├── requirements.txt      # Dependências do Python
