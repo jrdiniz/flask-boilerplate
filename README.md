@@ -8,10 +8,10 @@ git clone git@github.com:jrdiniz/flask-boilerplate.git .
 
 ## Criar ambiente virtual
 
-Eu testei este projeto com a versão 3.10. Se você testar com outra versão, por favor, abra um pull request para atualizar a documentação.
+Eu testei este projeto com a versão 3.12. Se você testar com outra versão, por favor, abra um pull request para atualizar a documentação.
 
 ```
-python3.10 -m venv env
+python3.12 -m venv env
 ```
 
 ## Instalar dependências 

@@ -1,5 +1,8 @@
 # Use the official Python image from the Docker Hub
-FROM ubuntu:22.04
+FROM python:3.12-slim
+
+# Create a non-root user and group
+RUN groupadd -r appuser && useradd -r -g appuser appuser
 
 # Set environment variables to non-interactive mode
 ENV DEBIAN_FRONTEND=noninteractive
@@ -23,7 +26,11 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the rest of the application code into the container
-COPY . .
+# Copy the rest of the application code into the container
+COPY --chown=appuser:appuser . .
+
+# Switch to non-root user
+USER appuser
 
 WORKDIR /htdocs/app/static
 RUN npm install
@@ -38,7 +45,7 @@ EXPOSE 5000
 ENV FLASK_APP=app
 ENV FLASK_DEBUG=False
 ENV FLASK_CONFIG_FILE=config.ProductionConfig
-ENV SECRET_KEY=<your-secret-key>
+
 
 # Command to run the Flask application
 CMD ["gunicorn", "-c", "gunicorn.conf.py", "wsgi:app"]
