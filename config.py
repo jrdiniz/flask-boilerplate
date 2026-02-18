@@ -6,6 +6,15 @@ BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 class Config(object):
     # Default
     SECRET_KEY = os.getenv("SECRET_KEY")
+    
+    # Extensions and Blueprints to load
+    EXTENSIONS = [
+        # "app.extensions.configurations"  # Loaded explicitly in factory
+    ]
+    
+    BLUEPRINTS = [
+        "app.blueprints.webui"
+    ]
 
 
 class ProductionConfig(Config):
